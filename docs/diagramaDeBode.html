@@ -40,8 +40,8 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleHintShow = 'Clique para expandir.';</script>
+    <script>let toggleHintHide = 'Clique para esconder.';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
@@ -326,6 +326,23 @@ document.write(`
 <p>e <span class="math notranslate nohighlight">\(\lim_{t\rightarrow  \infty}\sum_{i=1}^{n}k_i e^{\lambda_i t}=0\)</span>, fazendo com que, em regime permanente, a saída seja definida por</p>
 <div class="math notranslate nohighlight">
 \[y_{ss}(t)=H(j\omega)e^{j\omega t}, \hspace{1cm} t\ge 0.\]</div>
+<p>Dessa forma, se aplicarmos uma entrada exponencial complexa em um sistema LTI, a saída, em regime permanente, será uma exponencial complexa. Da mesma forma, se aplicarmos um sinal periódico senoidal como entrada de um sistema dinâmico, podemos mostrar que a saída do sistema terá também uma forma periódica senoidal. Considerando</p>
+<div class="math notranslate nohighlight">
+\[x(t)=Acos(\omega t + \theta)u(t)=A \operatorname{Re} [e^{j\omega t}e^{j\theta}]u(t) ,\]</div>
+<p>onde <span class="math notranslate nohighlight">\(A&gt;0\)</span> representa a amplitude do sinal, <span class="math notranslate nohighlight">\(\omega\geq 0\)</span> representa a frequência angular (em rad/s), e <span class="math notranslate nohighlight">\(\delta\)</span> representa a fase do sinal (em rad).</p>
+<p>Considerando que <span class="math notranslate nohighlight">\(h(s)\)</span> é representado na forma polar como</p>
+<div class="math notranslate nohighlight">
+\[H(s)=|H(h)| e^{j\angle H(j\omega)},\]</div>
+<p>a saída <span class="math notranslate nohighlight">\(y(t)\)</span> do sistema, em regime permanente, pode ser representada como</p>
+<div class="math notranslate nohighlight">
+\[y_{ss}(t)=A|H(h)| cos(\omega t + \theta + \angle H(j\omega)).\]</div>
+<p>Com isso, a resposta de um sistema dinâmico à uma entrada senoidal, em regime permanente, pode ser interpretada como o sinal senoidal de entrada escalado por um ganho <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, e deslocado por uma fase <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span>.</p>
+<p>Exemplo: Resposta de sistema a entrada senoidal</p>
+<div class="toggle toggle-hidden docutils container">
+<p>Considerando o sistema apresentado a seguir</p>
+<a class="reference internal image-reference" href="_images/sistema.png"><img alt="Alternative text" src="_images/sistema.png" style="width: 200px;" /></a>
+<p>sujeito à uma entrada</p>
+</div>
 </section>
 <section id="diagrama-de-bode">
 <h2>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h2>
@@ -340,7 +357,7 @@ a short interval of time we can plot this as:</p>
 <span class="linenos">4</span>
 <span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
 <span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBode.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -350,6 +367,44 @@ a short interval of time we can plot this as:</p>
 <img alt="_images/exemploBode.png" src="_images/exemploBode.png" />
 <figcaption>
 <p><span class="caption-text"><strong>Exemplo de um diagrama de Bode.</strong></span><a class="headerlink" href="#id1" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos">3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeConstante.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id2" style="width: 80%">
+<img alt="_images/exemploBodeConstante.png" src="_images/exemploBodeConstante.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para uma constante.</strong></span><a class="headerlink" href="#id2" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos">3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeIntegrador.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id3" style="width: 80%">
+<img alt="_images/exemploBodeIntegrador.png" src="_images/exemploBodeIntegrador.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para um integrador.</strong></span><a class="headerlink" href="#id3" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
 </section>
