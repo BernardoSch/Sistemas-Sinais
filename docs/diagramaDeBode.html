@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Resposta de Sistemas à Entradas Senoidais e Diagrama de Bode &#8212; Sistemas e Sinais</title>
+    <title>Resposta de Sistemas a Entradas Senoidais e Diagrama de Bode &#8212; Sistemas e Sinais</title>
   
   
   
@@ -129,7 +129,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resposta de Sistemas à Entradas Senoidais e Diagrama de Bode</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resposta de Sistemas a Entradas Senoidais e Diagrama de Bode</a></li>
 </ul>
 
     </div>
@@ -266,7 +266,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Resposta de Sistemas à Entradas Senoidais e Diagrama de Bode</h1>
+    <h1>Resposta de Sistemas a Entradas Senoidais e Diagrama de Bode</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -276,8 +276,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resposta-de-sistemas-a-entradas-senoidais">Resposta de Sistemas à Entradas Senoidais</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resposta-de-sistemas-a-entradas-senoidais">Resposta de Sistemas a Entradas Senoidais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-resposta-de-sistema-a-entrada-senoidal">Exemplo: Resposta de sistema a entrada senoidal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-ganho">Diagrama de Bode - Ganho</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-na-origem">Diagrama de Bode - Polo ou Zero na origem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-de-primeira-ordem">Diagrama de Bode - Polo ou Zero de primeira ordem</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a></li>
 </ul>
             </nav>
@@ -291,9 +299,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="resposta-de-sistemas-a-entradas-senoidais-e-diagrama-de-bode">
-<h1>Resposta de Sistemas à Entradas Senoidais e Diagrama de Bode<a class="headerlink" href="#resposta-de-sistemas-a-entradas-senoidais-e-diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h1>
+<h1>Resposta de Sistemas a Entradas Senoidais e Diagrama de Bode<a class="headerlink" href="#resposta-de-sistemas-a-entradas-senoidais-e-diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h1>
 <section id="resposta-de-sistemas-a-entradas-senoidais">
-<h2>Resposta de Sistemas à Entradas Senoidais<a class="headerlink" href="#resposta-de-sistemas-a-entradas-senoidais" title="Link permanente para este cabeçalho">#</a></h2>
+<h2>Resposta de Sistemas a Entradas Senoidais<a class="headerlink" href="#resposta-de-sistemas-a-entradas-senoidais" title="Link permanente para este cabeçalho">#</a></h2>
 <p>Considerando um sistema descrito pela função de transferência</p>
 <div class="math notranslate nohighlight">
 \[H(s)=\frac{P(s)}{Q(s)}=\frac{P(s)}{(s-\lambda_1)\dots(s-\lambda_n)},\]</div>
@@ -337,25 +345,59 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[y_{ss}(t)=A|H(h)| cos(\omega t + \theta + \angle H(j\omega)).\]</div>
 <p>Com isso, a resposta de um sistema dinâmico à uma entrada senoidal, em regime permanente, pode ser interpretada como o sinal senoidal de entrada escalado por um ganho <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, e deslocado por uma fase <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span>.</p>
-<p>Exemplo: Resposta de sistema a entrada senoidal</p>
+<section id="exemplo-resposta-de-sistema-a-entrada-senoidal">
+<h3>Exemplo: Resposta de sistema a entrada senoidal<a class="headerlink" href="#exemplo-resposta-de-sistema-a-entrada-senoidal" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Considerando o sistema representado pela função de transferência</p>
+<div class="math notranslate nohighlight">
+\[H(s)=\frac{(s+1)}{s(+10)}\]</div>
+<p>sujeito à uma entrada <span class="math notranslate nohighlight">\(x(t)=cos(3t)\)</span>, determine a resposta <span class="math notranslate nohighlight">\(y(t)\)</span> em regime permanente.</p>
+<p>Solução:</p>
 <div class="toggle toggle-hidden docutils container">
-<p>Considerando o sistema apresentado a seguir</p>
-<a class="reference internal image-reference" href="_images/sistema.png"><img alt="Alternative text" src="_images/sistema.png" style="width: 200px;" /></a>
-<p>sujeito à uma entrada</p>
+<p>Considerando que</p>
+<div class="math notranslate nohighlight">
+\[H(j\omega)=\frac{j\omega +1}{j\omega +10},\]</div>
+<p>podemos obter o módulo e a fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> por meio de</p>
+<div class="math notranslate nohighlight">
+\[|H(j\omega)|=\frac{\sqrt{\omega^2 + 1^2}}{\sqrt{\omega^2 + 10^2}}\]</div>
+<p>e</p>
+<div class="math notranslate nohighlight">
+\[\angle H(j\omega)=tan^{-1}\Big(\frac{\omega}{1}\Big)-tan^{-1}\Big(\frac{\omega}{10}\Big)\]</div>
+<p>Dessa forma, podemos obter o valor do módulo e da fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> para qualquer valor de <span class="math notranslate nohighlight">\(\omega\)</span>. Para a entrada <span class="math notranslate nohighlight">\(x(t)=cos(3t)\)</span>, temos <span class="math notranslate nohighlight">\(\omega=2\)</span> e^</p>
+<div class="math notranslate nohighlight">
+\[|H(j3)|=\frac{\sqrt{3^2 + 1^2}}{\sqrt{3^2 + 10^2}}=\frac{\sqrt{10}}{\sqrt{109}}=0,3\]</div>
+<p>e</p>
+<div class="math notranslate nohighlight">
+\[\angle H(j3)=tan^{-1}\Big(\frac{3}{1}\Big)-tan^{-1}\Big(\frac{3}{10}\Big)=54,87^o\]</div>
+<p>Dessa forma, <span class="math notranslate nohighlight">\(y_{ss}(t)\)</span>, para a entrada <span class="math notranslate nohighlight">\(x(t)=cos(3t)\)</span>, é</p>
+<div class="math notranslate nohighlight">
+\[y_{ss}(t)=A|H(h)| cos(\omega t + \theta + \angle H(j\omega))=0,3cos(2t+54,87^o).\]</div>
 </div>
+</section>
 </section>
 <section id="diagrama-de-bode">
 <h2>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h2>
-<p>Consider a CT signal <span class="math notranslate nohighlight">\(x(t)\)</span>. A real valued CT signal is plotted using
-the standard ways to plot a function $x: setR rightarrow
-setR$. Consider the sinusoidal signal $x(t)=325 sin(2pi 50 t)$ for
-a short interval of time we can plot this as:</p>
+<p>Como apresentado na seção anterior, a resposta de um sistema dinâmico, quando excitado por uma entrada senoidal, será uma senóide com a mesma frequência, porém, com amplitude e fase alteradas pelo sistema dinâmico. Cada sistema dinâmico se comportará diferente para valores diferentes de frequência, dessa forma, é útil saber qual sera o comportamento de um sistema para todo o espectro de frequências. Isso é alcançado usando o diagrama de Bode, o qual consiste em uma representação gráfica do módulo e fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span>.</p>
+<p>No diagrama de Bode, são apresentados separadamente <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span> e <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span>, para todos valores de <span class="math notranslate nohighlight">\(\omega\)</span>. Esses gráficos são apresentados considerando escala logarítmica, o que facilita a interpretação e traçado dos mesmos.</p>
+<p>Considerando uma função de transferência</p>
+<div class="math notranslate nohighlight">
+\[H(j\omega)=\frac{K\prod_{i=1}^{m} (j\omega+z_i)}{\prod_{j=1}^{n} (j\omega+p_j)}\]</div>
+<p>a qual é constituída por um produto de polos dividido por um produto de zeros e é uma grandeza complexa, podemos representar seu módulo e sua fase como</p>
+<div class="math notranslate nohighlight">
+\[|H(j\omega)|=\frac{K\prod_{i=1}^{m} \mid(j\omega+z_i)\mid}{\prod_{j=1}^{n} \mid(j\omega+p_j)\mid}\]</div>
+<p>e</p>
+<div class="math notranslate nohighlight">
+\[\angle H(j\omega)=\sum_{i=1}^{m} \angle(j\omega+z_i)-\sum_{j=1}^{n} \angle(j\omega+p_j).\]</div>
+<p>O traçado da fase de <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span> é direto, já que podemos obter a fase de cada elemento da função de transferência e somar os espectros de fase dos mesmos. Porém, para o módulo, esse traçado não é direto, pois <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span> é a multiplicação dos módulos individuais de cada elemento da função de transferência.</p>
+<p>Uma forma de simplificar a obtenção do diagrama de Bode é o traçado do logarítmo do módulo <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, fazendo com que seja possível somar os espectros de módulo das componentes individuais da função de transferência. Isso porque, ao aplicarmos o logarítmo em <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, obtemos</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}log_{10}(|H(j\omega)|)&amp;=log_{10}\Big(\frac{K\prod_{i=1}^{m} |(j\omega+z_i)|}{\prod_{j=1}^{n}|(j\omega+p_j)|}\Big)\\log_{10}(|H(j\omega)|)&amp;=log_{10}(K)+\sum_{i=1}^{m} log_{10} (|(j\omega+z_i)|) - \sum_{j=1}^{n}log_{10}(|(j\omega+p_j)|).\end{aligned}\end{align} \]</div>
+<p>Ou seja, após aplicarmos o logarítmo na base 10 em <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, podemos somar a contribuição de cada elemento de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> para obter <span class="math notranslate nohighlight">\(log_{10}(|H(j\omega)|)\)</span>. Por convenção, sempre é usado o valor de <span class="math notranslate nohighlight">\(log_{10}(|H(j\omega)|)\)</span> multiplicado por 20, resultado na unidade decibél. Com isso, o diagrama de Bode é a representação do módulo e fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span>, para todo <span class="math notranslate nohighlight">\(\omega\)</span>, sendo que o módulo é apresentado por meio de <span class="math notranslate nohighlight">\(20log_{10}(|H(j\omega)|)\)</span> e a fase diretamente como  <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span>. Um exemplo de diagrama de Bode, para o sistema <span class="math notranslate nohighlight">\(H(s)=\frac{(s+2)}{s^2+0,5s+1}\)</span> é apresentado na figura a seguir.</p>
 <div class="toggle toggle-hidden docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="linenos">2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos">3</span><span class="kn">import</span> <span class="nn">control</span>
 <span class="linenos">4</span>
-<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 <span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
@@ -369,44 +411,143 @@ a short interval of time we can plot this as:</p>
 <p><span class="caption-text"><strong>Exemplo de um diagrama de Bode.</strong></span><a class="headerlink" href="#id1" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
+<p>O traçado do diagrama de Bode pode ser esboçado se conhecermos o compotamento de cada tipo de elemento de uma função de transferência. Esboçando o comportamento de cada elemento, e somando os espectros de módulo e fase, obtemos o diagrama de Bode de qualquer função de transferência. A seguir são apresentados os espectros de módulo e fase dos componentes básicos de uma função de transferência (ganho, zeros e polos).</p>
+<section id="diagrama-de-bode-ganho">
+<h3>Diagrama de Bode - Ganho<a class="headerlink" href="#diagrama-de-bode-ganho" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Uma função de transferência definida como apenas um ganho <span class="math notranslate nohighlight">\(H(s)=K\)</span> tem seu valor independente de <span class="math notranslate nohighlight">\(\omega\)</span>. Dessa forma, tanto o módulo quanto a fase serão linhas horizontais, com o módulo tendo valor <span class="math notranslate nohighlight">\(20log_{10}(K)\)</span> e fase <span class="math notranslate nohighlight">\(0\)</span>, quando o ganho tem sinal positivo, e fase <span class="math notranslate nohighlight">\(-180^o\)</span> quando o ganho tem sinal negativo. O diagrama para uma constante <span class="math notranslate nohighlight">\(K=1\)</span> é apresentado a seguir.</p>
 <div class="toggle toggle-hidden docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos">2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">3</span><span class="kn">import</span> <span class="nn">control</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
-<span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
-<span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeConstante.png&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeConstante.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <figure class="align-center" id="id2" style="width: 80%">
 <img alt="_images/exemploBodeConstante.png" src="_images/exemploBodeConstante.png" />
 <figcaption>
-<p><span class="caption-text"><strong>Diagrama de Bode para uma constante.</strong></span><a class="headerlink" href="#id2" title="Link Permanente para essa imagem">#</a></p>
+<p><span class="caption-text"><strong>Diagrama de Bode para uma constante positiva (linha sólida) e negativa (linha pontilhada), ambas com ganho unitário.</strong></span><a class="headerlink" href="#id2" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="diagrama-de-bode-polo-ou-zero-na-origem">
+<h3>Diagrama de Bode - Polo ou Zero na origem<a class="headerlink" href="#diagrama-de-bode-polo-ou-zero-na-origem" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Quando existe um polo na origem, o qual implementa um integrador, cuja função de transferência é <span class="math notranslate nohighlight">\(G(j\omega)=\frac{1}{j\omega}\)</span>, temos</p>
+<div class="math notranslate nohighlight">
+\[20log_{10}|G(j\omega)|=\Big|\frac{1}{j\omega}\Big|=-20log_{10}|j\omega|\]</div>
+<p>o que corresponde à uma reta com inclinação <span class="math notranslate nohighlight">\(-20\)</span>, a qual cruza o eixo <span class="math notranslate nohighlight">\(x\)</span> em <span class="math notranslate nohighlight">\(0\)</span> quando <span class="math notranslate nohighlight">\(\omega=1\)</span>, pois <span class="math notranslate nohighlight">\(log_{10}\omega=0\)</span>. A fase é constante, sendo <span class="math notranslate nohighlight">\(\angle G(j\omega)=\angle \frac{1}{j\omega}=- \angle (j\omega)=-90^o\)</span>.</p>
+<p>De forma análoga, quando temos um derivador, representado pela função de transferência <span class="math notranslate nohighlight">\(G(j\omega)=j\omega\)</span>, o módulo será dado por</p>
+<div class="math notranslate nohighlight">
+\[20log_{10}|G(j\omega)|=j\omega|=20log_{10}|j\omega|\]</div>
+<p>representando uma reta com inclinação 20, e a fase será <span class="math notranslate nohighlight">\(\angle G(j\omega)=\angle j\omega=90^o\)</span>. O diagrama de Bode para sistemas integradores e derivadores é apresentado a seguir.</p>
 <div class="toggle toggle-hidden docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos">2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">3</span><span class="kn">import</span> <span class="nn">control</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
-<span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeIntegrador.png&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G_d</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">G_i</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G_i</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G_d</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeIntegrador.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <figure class="align-center" id="id3" style="width: 80%">
 <img alt="_images/exemploBodeIntegrador.png" src="_images/exemploBodeIntegrador.png" />
 <figcaption>
-<p><span class="caption-text"><strong>Diagrama de Bode para um integrador.</strong></span><a class="headerlink" href="#id3" title="Link Permanente para essa imagem">#</a></p>
+<p><span class="caption-text"><strong>Diagrama de Bode para um integrador (linha sólida) e um derivador (linha pontilhada).</strong></span><a class="headerlink" href="#id3" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="diagrama-de-bode-polo-ou-zero-de-primeira-ordem">
+<h3>Diagrama de Bode - Polo ou Zero de primeira ordem<a class="headerlink" href="#diagrama-de-bode-polo-ou-zero-de-primeira-ordem" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Uma função de transferência pode ser composta de polos ou zeros únicos. Para o caso com polo único, temos a função de transferência na forma</p>
+<div class="math notranslate nohighlight">
+\[H(j\omega)=\frac{1}{(j\omega+a)}.\]</div>
+<p>O módulo, ::math::<cite>|H(jomega)|</cite>, é definido como</p>
+<div class="math notranslate nohighlight">
+\[|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|.\]</div>
+<p>Quando <span class="math notranslate nohighlight">\(\omega\)</span> é muito pequeno em relação à <span class="math notranslate nohighlight">\(a\)</span>, o módulo se aproxima à <span class="math notranslate nohighlight">\(-20log_{10}\Big| 1\Big|=0\)</span>. Já para <span class="math notranslate nohighlight">\(\omega&gt;&gt;a\)</span>, o módulo é</p>
+<div class="math notranslate nohighlight">
+\[|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|\approx -20log_{10}\omega + 20log_{10}a.\]</div>
+<p>Na escala logarítmica, a aproximação da expressão <span class="math notranslate nohighlight">\(-20log_{10}\omega + 20log_{10}\)</span>  equivale à uma reta, iniciando em <span class="math notranslate nohighlight">\(\omega=a\)</span> e com decaimento de -20~dB por década. Dessa forma, uma aproximação da magnitude do diagrama de Bode para um sistema com polo único consiste em uma reta constante entre <span class="math notranslate nohighlight">\(\omega=-\infty\)</span> e <span class="math notranslate nohighlight">\(\omega=a\)</span>, e uma reta decrescente, partindo de <span class="math notranslate nohighlight">\(\omega=a\)</span> até <span class="math notranslate nohighlight">\(\omega=\infty\)</span>, com decaimento de 20dB/Década. Essa aproximação é válida, resultando em uma diferença menor que 3~dB.</p>
+<p>A fase de ::math::<cite>H(jomega)</cite> é dada por</p>
+<div class="math notranslate nohighlight">
+\[\angle H(j\omega)=-\angle\Big(1+\frac{j\omega}{a} \Big)=-tan^{-1}\Big(\frac{\omega}{a} \Big).\]</div>
+<p>Se avaliarmos o comportamento da fase para <span class="math notranslate nohighlight">\(\omega&lt;&lt;a\)</span>, temos</p>
+<div class="math notranslate nohighlight">
+\[-tan^{-1}\Big(\frac{\omega}{a} \Big)\approx 0.\]</div>
+<p>De forma similar, para para <span class="math notranslate nohighlight">\(\omega&lt;&lt;a\)</span>, temos</p>
+<div class="math notranslate nohighlight">
+\[-tan^{-1}\Big(\frac{\omega}{a} \Big)\approx -90^o.\]</div>
+<p>A fase é composta, então, por duas assíntotas em <span class="math notranslate nohighlight">\(0^o\)</span> e <span class="math notranslate nohighlight">\(-90^o\)</span>, ligadas por uma reta iniciando em <span class="math notranslate nohighlight">\(0,1a\)</span> e terminando em <span class="math notranslate nohighlight">\(10a\)</span>. Dessa forma, a fase é <span class="math notranslate nohighlight">\(-45^o\)</span> quando <span class="math notranslate nohighlight">\(\omega=a\)</span>.</p>
+<p>Para um sistema</p>
+<div class="math notranslate nohighlight">
+\[H(s)=\frac{1}{s+a}\]</div>
+<p>o seu diagrama de Bode pode ser traçado como</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G_d</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">G_i</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G_i</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span>     <span class="c1"># get subplot axes</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>                 <span class="c1"># magnitude plot</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">20</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodePoloOrdem1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id4" style="width: 80%">
+<img alt="_images/exemploBodePoloOrdem1.png" src="_images/exemploBodePoloOrdem1.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para um polo em s-a (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id4" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G_d</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">G_i</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G_d</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span>     <span class="c1"># get subplot axes</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>                 <span class="c1"># magnitude plot</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeZeroOrdem1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id5" style="width: 80%">
+<img alt="_images/exemploBodeZeroOrdem1.png" src="_images/exemploBodeZeroOrdem1.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para um zero em s-a (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id5" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[H(j\omega)=(j\omega+b)\]</div>
+</section>
 </section>
 <section id="projeto-de-filtros">
 <h2>Projeto de Filtros<a class="headerlink" href="#projeto-de-filtros" title="Link permanente para este cabeçalho">#</a></h2>
@@ -452,8 +593,16 @@ a short interval of time we can plot this as:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resposta-de-sistemas-a-entradas-senoidais">Resposta de Sistemas à Entradas Senoidais</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resposta-de-sistemas-a-entradas-senoidais">Resposta de Sistemas a Entradas Senoidais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-resposta-de-sistema-a-entrada-senoidal">Exemplo: Resposta de sistema a entrada senoidal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-ganho">Diagrama de Bode - Ganho</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-na-origem">Diagrama de Bode - Polo ou Zero na origem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-de-primeira-ordem">Diagrama de Bode - Polo ou Zero de primeira ordem</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a></li>
 </ul>
   </nav></div>

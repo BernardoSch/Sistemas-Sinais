@@ -1,8 +1,9 @@
-Resposta de Sistemas à Entradas Senoidais e Diagrama de Bode
+============================================================
+Resposta de Sistemas a Entradas Senoidais e Diagrama de Bode
 ============================================================
 
-Resposta de Sistemas à Entradas Senoidais
------------------------------------------
+Resposta de Sistemas a Entradas Senoidais
+=========================================
 
 Considerando um sistema descrito pela função de transferência 
 
@@ -77,27 +78,83 @@ a saída :math:`y(t)` do sistema, em regime permanente, pode ser representada co
 	
 Com isso, a resposta de um sistema dinâmico à uma entrada senoidal, em regime permanente, pode ser interpretada como o sinal senoidal de entrada escalado por um ganho :math:`|H(j\omega)|`, e deslocado por uma fase :math:`\angle H(j\omega)`. 
 
-
+-----------------------------------------------
 Exemplo: Resposta de sistema a entrada senoidal
+-----------------------------------------------
+
+Considerando o sistema representado pela função de transferência
+
+.. math:: 
+	H(s)=\frac{(s+1)}{s(+10)}
+		
+sujeito à uma entrada :math:`x(t)=cos(3t)`, determine a resposta :math:`y(t)` em regime permanente.
+	
+Solução:
 
 .. container:: toggle, toggle-hidden
-
-	Considerando o sistema apresentado a seguir
 	
-	.. image:: figures/sistema.png	
-		:width: 200
-		:alt: Alternative text	
+	Considerando que
 		
-	sujeito à uma entrada
+	.. math::
+		H(j\omega)=\frac{j\omega +1}{j\omega +10},
+			
+	podemos obter o módulo e a fase de :math:`H(j\omega)` por meio de
 		
+	.. math::
+		|H(j\omega)|=\frac{\sqrt{\omega^2 + 1^2}}{\sqrt{\omega^2 + 10^2}}
+			
+	e
+		
+	.. math:: 
+		\angle H(j\omega)=tan^{-1}\Big(\frac{\omega}{1}\Big)-tan^{-1}\Big(\frac{\omega}{10}\Big)
+
+	Dessa forma, podemos obter o valor do módulo e da fase de :math:`H(j\omega)` para qualquer valor de :math:`\omega`. Para a entrada :math:`x(t)=cos(3t)`, temos :math:`\omega=2` e^
+	
+	.. math::
+		|H(j3)|=\frac{\sqrt{3^2 + 1^2}}{\sqrt{3^2 + 10^2}}=\frac{\sqrt{10}}{\sqrt{109}}=0,3
+	
+	e
+	
+	.. math:: 
+		\angle H(j3)=tan^{-1}\Big(\frac{3}{1}\Big)-tan^{-1}\Big(\frac{3}{10}\Big)=54,87^o
+		
+	Dessa forma, :math:`y_{ss}(t)`, para a entrada :math:`x(t)=cos(3t)`, é
+	
+	.. math::
+		y_{ss}(t)=A|H(h)| cos(\omega t + \theta + \angle H(j\omega))=0,3cos(2t+54,87^o).
+			
 Diagrama de Bode
-----------------
+================
 
-Consider a CT signal :math:`x(t)`. A real valued CT signal is plotted using
-the standard ways to plot a function $x: \setR \rightarrow
-\setR$. Consider the sinusoidal signal $x(t)=325 \sin(2\pi 50 t)$ for
-a short interval of time we can plot this as:
+Como apresentado na seção anterior, a resposta de um sistema dinâmico, quando excitado por uma entrada senoidal, será uma senóide com a mesma frequência, porém, com amplitude e fase alteradas pelo sistema dinâmico. Cada sistema dinâmico se comportará diferente para valores diferentes de frequência, dessa forma, é útil saber qual sera o comportamento de um sistema para todo o espectro de frequências. Isso é alcançado usando o diagrama de Bode, o qual consiste em uma representação gráfica do módulo e fase de :math:`H(j\omega)`.
 
+No diagrama de Bode, são apresentados separadamente :math:`|H(j\omega)|` e :math:`\angle H(j\omega)`, para todos valores de :math:`\omega`. Esses gráficos são apresentados considerando escala logarítmica, o que facilita a interpretação e traçado dos mesmos. 
+
+Considerando uma função de transferência
+
+.. math::
+	H(j\omega)=\frac{K\prod_{i=1}^{m} (j\omega+z_i)}{\prod_{j=1}^{n} (j\omega+p_j)}
+
+a qual é constituída por um produto de polos dividido por um produto de zeros e é uma grandeza complexa, podemos representar seu módulo e sua fase como
+
+.. math::
+	|H(j\omega)|=\frac{K\prod_{i=1}^{m} \mid(j\omega+z_i)\mid}{\prod_{j=1}^{n} \mid(j\omega+p_j)\mid}
+	
+e
+
+.. math::
+	\angle H(j\omega)=\sum_{i=1}^{m} \angle(j\omega+z_i)-\sum_{j=1}^{n} \angle(j\omega+p_j).
+
+O traçado da fase de :math:`\angle H(j\omega)` é direto, já que podemos obter a fase de cada elemento da função de transferência e somar os espectros de fase dos mesmos. Porém, para o módulo, esse traçado não é direto, pois :math:`|H(j\omega)|` é a multiplicação dos módulos individuais de cada elemento da função de transferência. 
+
+Uma forma de simplificar a obtenção do diagrama de Bode é o traçado do logarítmo do módulo :math:`|H(j\omega)|`, fazendo com que seja possível somar os espectros de módulo das componentes individuais da função de transferência. Isso porque, ao aplicarmos o logarítmo em :math:`|H(j\omega)|`, obtemos
+
+.. math::
+	log_{10}(|H(j\omega)|)&=log_{10}\Big(\frac{K\prod_{i=1}^{m} |(j\omega+z_i)|}{\prod_{j=1}^{n}|(j\omega+p_j)|}\Big)
+	
+	log_{10}(|H(j\omega)|)&=log_{10}(K)+\sum_{i=1}^{m} log_{10} (|(j\omega+z_i)|) - \sum_{j=1}^{n}log_{10}(|(j\omega+p_j)|).
+
+Ou seja, após aplicarmos o logarítmo na base 10 em :math:`|H(j\omega)|`, podemos somar a contribuição de cada elemento de :math:`H(j\omega)` para obter :math:`log_{10}(|H(j\omega)|)`. Por convenção, sempre é usado o valor de :math:`log_{10}(|H(j\omega)|)` multiplicado por 20, resultado na unidade decibél. Com isso, o diagrama de Bode é a representação do módulo e fase de :math:`H(j\omega)`, para todo :math:`\omega`, sendo que o módulo é apresentado por meio de :math:`20log_{10}(|H(j\omega)|)` e a fase diretamente como  :math:`\angle H(j\omega)`. Um exemplo de diagrama de Bode, para o sistema :math:`H(s)=\frac{(s+2)}{s^2+0,5s+1}` é apresentado na figura a seguir.
 
 .. container:: toggle, toggle-hidden
 
@@ -109,7 +166,7 @@ a short interval of time we can plot this as:
 		import matplotlib.pyplot as plt
 		import control
 
-		G = 0.2*control.tf([0.5,1],[1.5,0.5,1])
+		G = 0.2*control.tf([1,2],[1,0.5,1])
 		plt.clf()
 		ag,phase,omega = control.bode(G,Hz=True,dB=True) 
 		plt.xlabel("Frequência (rad/s)")
@@ -121,7 +178,14 @@ a short interval of time we can plot this as:
 
 	**Exemplo de um diagrama de Bode.**
 	
-	
+O traçado do diagrama de Bode pode ser esboçado se conhecermos o compotamento de cada tipo de elemento de uma função de transferência. Esboçando o comportamento de cada elemento, e somando os espectros de módulo e fase, obtemos o diagrama de Bode de qualquer função de transferência. A seguir são apresentados os espectros de módulo e fase dos componentes básicos de uma função de transferência (ganho, zeros e polos).
+
+------------------------
+Diagrama de Bode - Ganho
+------------------------
+
+Uma função de transferência definida como apenas um ganho :math:`H(s)=K` tem seu valor independente de :math:`\omega`. Dessa forma, tanto o módulo quanto a fase serão linhas horizontais, com o módulo tendo valor :math:`20log_{10}(K)` e fase :math:`0`, quando o ganho tem sinal positivo, e fase :math:`-180^o` quando o ganho tem sinal negativo. O diagrama para uma constante :math:`K=1` é apresentado a seguir.   
+
 .. container:: toggle, toggle-hidden
 
 	.. exec_code:: realCTsignals signalplots
@@ -134,15 +198,35 @@ a short interval of time we can plot this as:
 
 		G = control.tf([1],[1])
 		plt.clf()
-		ag,phase,omega = control.bode(G,Hz=True,dB=True) 
+		ag,phase,omega = control.bode(G,Hz=False,dB=True,color='k')
+		ag,phase,omega = control.bode(-1*G,Hz=False,dB=True,color='k',linestyle='dotted')		
 		plt.xlabel("Frequência (rad/s)")
-		plt.savefig('source/figures/exemploBodeConstante.png')
+		plt.savefig('source/figures/exemploBodeConstante.png')		
 		
 .. figure:: /figures/exemploBodeConstante.png
 	:figwidth: 80%
 	:align: center
 
-	**Diagrama de Bode para uma constante.**
+	**Diagrama de Bode para uma constante positiva (linha sólida) e negativa (linha pontilhada), ambas com ganho unitário.**
+
+
+-----------------------------------------
+Diagrama de Bode - Polo ou Zero na origem
+-----------------------------------------
+
+Quando existe um polo na origem, o qual implementa um integrador, cuja função de transferência é :math:`G(j\omega)=\frac{1}{j\omega}`, temos 
+
+.. math:: 
+	20log_{10}|G(j\omega)|=\Big|\frac{1}{j\omega}\Big|=-20log_{10}|j\omega|
+	
+o que corresponde à uma reta com inclinação :math:`-20`, a qual cruza o eixo :math:`x` em :math:`0` quando :math:`\omega=1`, pois :math:`log_{10}\omega=0`. A fase é constante, sendo :math:`\angle G(j\omega)=\angle \frac{1}{j\omega}=- \angle (j\omega)=-90^o`.
+
+De forma análoga, quando temos um derivador, representado pela função de transferência :math:`G(j\omega)=j\omega`, o módulo será dado por 
+
+.. math:: 
+	20log_{10}|G(j\omega)|=j\omega|=20log_{10}|j\omega|
+	
+representando uma reta com inclinação 20, e a fase será :math:`\angle G(j\omega)=\angle j\omega=90^o`. O diagrama de Bode para sistemas integradores e derivadores é apresentado a seguir.
 
 .. container:: toggle, toggle-hidden
 
@@ -154,9 +238,12 @@ a short interval of time we can plot this as:
 		import matplotlib.pyplot as plt
 		import control
 
-		G = control.tf([1],[1,1])
+		G_d = control.tf([1,0],[1])
+		G_i = control.tf([1],[1,0])
 		plt.clf()
-		ag,phase,omega = control.bode(G,Hz=True,dB=True) 
+		ag,phase,omega = control.bode(G_i,Hz=False,dB=True,color='k')
+		ag,phase,omega = control.bode(G_d,Hz=False,dB=True,color='k',linestyle='dotted') 
+
 		plt.xlabel("Frequência (rad/s)")
 		plt.savefig('source/figures/exemploBodeIntegrador.png')
 		
@@ -164,8 +251,116 @@ a short interval of time we can plot this as:
 	:figwidth: 80%
 	:align: center
 
-	**Diagrama de Bode para um integrador.**
+	**Diagrama de Bode para um integrador (linha sólida) e um derivador (linha pontilhada).**
 
 
+-------------------------------------------------
+Diagrama de Bode - Polo ou Zero de primeira ordem
+-------------------------------------------------
+
+Uma função de transferência pode ser composta de polos ou zeros únicos. Para o caso com polo único, temos a função de transferência na forma
+
+.. math:: 
+	H(j\omega)=\frac{1}{(j\omega+a)}.
+
+O módulo, ::math::`|H(j\omega)|`, é definido como
+
+.. math::
+	|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|.
+	
+Quando :math:`\omega` é muito pequeno em relação à :math:`a`, o módulo se aproxima à :math:`-20log_{10}\Big| 1\Big|=0`. Já para :math:`\omega>>a`, o módulo é
+
+.. math::
+	|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|\approx -20log_{10}\omega + 20log_{10}a.
+
+Na escala logarítmica, a aproximação da expressão :math:`-20log_{10}\omega + 20log_{10}`  equivale à uma reta, iniciando em :math:`\omega=a` e com decaimento de -20~dB por década. Dessa forma, uma aproximação da magnitude do diagrama de Bode para um sistema com polo único consiste em uma reta constante entre :math:`\omega=-\infty` e :math:`\omega=a`, e uma reta decrescente, partindo de :math:`\omega=a` até :math:`\omega=\infty`, com decaimento de 20dB/Década. Essa aproximação é válida, resultando em uma diferença menor que 3~dB. 
+
+A fase de ::math::`H(j\omega)` é dada por
+
+.. math::
+	\angle H(j\omega)=-\angle\Big(1+\frac{j\omega}{a} \Big)=-tan^{-1}\Big(\frac{\omega}{a} \Big).
+
+Se avaliarmos o comportamento da fase para :math:`\omega<<a`, temos
+
+.. math::
+	-tan^{-1}\Big(\frac{\omega}{a} \Big)\approx 0.
+
+De forma similar, para para :math:`\omega<<a`, temos
+
+.. math::
+	-tan^{-1}\Big(\frac{\omega}{a} \Big)\approx -90^o.
+
+A fase é composta, então, por duas assíntotas em :math:`0^o` e :math:`-90^o`, ligadas por uma reta iniciando em :math:`0,1a` e terminando em :math:`10a`. Dessa forma, a fase é :math:`-45^o` quando :math:`\omega=a`.
+
+Para um sistema 
+
+.. math::
+	H(s)=\frac{1}{s+a}
+
+o seu diagrama de Bode pode ser traçado como
+	
+.. container:: toggle, toggle-hidden
+
+	.. exec_code:: realCTsignals signalplots
+		:linenos:
+		:hide_output:
+
+		import numpy as np
+		import matplotlib.pyplot as plt
+		import control
+
+		G_d = control.tf([1,1],[1])
+		G_i = control.tf([1],[1,1])
+		plt.clf()
+		ag,phase,omega = control.bode(G_i,Hz=False,dB=True,color='k')
+
+		ax1,ax2 = plt.gcf().axes     # get subplot axes
+		plt.sca(ax1)                 # magnitude plot
+		plt.plot([0,1],[0,0],'k--')
+		plt.plot([1,10],[0,-20],'k--')
+		plt.xlabel("Frequência (rad/s)")
+		plt.savefig('source/figures/exemploBodePoloOrdem1.png')
+		
+		
+.. figure:: /figures/exemploBodePoloOrdem1.png
+	:figwidth: 80%
+	:align: center
+
+	**Diagrama de Bode para um polo em s-a (linha sólida) e suas assíntotas (linha pontilhada).**
+	
+
+.. container:: toggle, toggle-hidden
+
+	.. exec_code:: realCTsignals signalplots
+		:linenos:
+		:hide_output:
+
+		import numpy as np
+		import matplotlib.pyplot as plt
+		import control
+
+		G_d = control.tf([1,1],[1])
+		G_i = control.tf([1],[1,1])
+		plt.clf()
+		ag,phase,omega = control.bode(G_d,Hz=False,dB=True,color='k')
+		
+		ax1,ax2 = plt.gcf().axes     # get subplot axes
+		plt.sca(ax1)                 # magnitude plot
+		plt.plot([0,1],[0,0],'k--')
+		plt.plot([1,10],[0,20],'k--')
+		plt.xlabel("Frequência (rad/s)")
+		plt.savefig('source/figures/exemploBodeZeroOrdem1.png')
+		
+		
+.. figure:: /figures/exemploBodeZeroOrdem1.png
+	:figwidth: 80%
+	:align: center
+
+	**Diagrama de Bode para um zero em s-a (linha sólida) e suas assíntotas (linha pontilhada).**
+
+.. math::
+	H(j\omega)=(j\omega+b)
+	
+		
 Projeto de Filtros
-------------------
+==================
