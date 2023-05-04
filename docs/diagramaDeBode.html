@@ -284,9 +284,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-ganho">Diagrama de Bode - Ganho</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-na-origem">Diagrama de Bode - Polo ou Zero na origem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-de-primeira-ordem">Diagrama de Bode - Polo ou Zero de primeira ordem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polos-e-zeros-de-segunda-ordem">Diagrama de Bode - Polos e zeros de segunda ordem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1">Exemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-2">Exemplo 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-ideais">Filtros ideais</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-praticos">Filtros práticos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-filtragem">Exemplos de filtragem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios">Exercícios</a></li>
 </ul>
             </nav>
         </div>
@@ -343,13 +352,13 @@ document.write(`
 \[H(s)=|H(h)| e^{j\angle H(j\omega)},\]</div>
 <p>a saída <span class="math notranslate nohighlight">\(y(t)\)</span> do sistema, em regime permanente, pode ser representada como</p>
 <div class="math notranslate nohighlight">
-\[y_{ss}(t)=A|H(h)| cos(\omega t + \theta + \angle H(j\omega)).\]</div>
+\[y_{ss}(t)=A|H(j\omega)| cos(\omega t + \theta + \angle H(j\omega)).\]</div>
 <p>Com isso, a resposta de um sistema dinâmico à uma entrada senoidal, em regime permanente, pode ser interpretada como o sinal senoidal de entrada escalado por um ganho <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, e deslocado por uma fase <span class="math notranslate nohighlight">\(\angle H(j\omega)\)</span>.</p>
 <section id="exemplo-resposta-de-sistema-a-entrada-senoidal">
 <h3>Exemplo: Resposta de sistema a entrada senoidal<a class="headerlink" href="#exemplo-resposta-de-sistema-a-entrada-senoidal" title="Link permanente para este cabeçalho">#</a></h3>
 <p>Considerando o sistema representado pela função de transferência</p>
 <div class="math notranslate nohighlight">
-\[H(s)=\frac{(s+1)}{s(+10)}\]</div>
+\[H(s)=\frac{(s+1)}{(s+10)}\]</div>
 <p>sujeito à uma entrada <span class="math notranslate nohighlight">\(x(t)=cos(3t)\)</span>, determine a resposta <span class="math notranslate nohighlight">\(y(t)\)</span> em regime permanente.</p>
 <p>Solução:</p>
 <div class="toggle toggle-hidden docutils container">
@@ -399,7 +408,7 @@ document.write(`
 <span class="linenos">4</span>
 <span class="linenos">5</span><span class="n">G</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="linenos">6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
 <span class="linenos">9</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBode.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -411,7 +420,7 @@ document.write(`
 <p><span class="caption-text"><strong>Exemplo de um diagrama de Bode.</strong></span><a class="headerlink" href="#id1" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
-<p>O traçado do diagrama de Bode pode ser esboçado se conhecermos o compotamento de cada tipo de elemento de uma função de transferência. Esboçando o comportamento de cada elemento, e somando os espectros de módulo e fase, obtemos o diagrama de Bode de qualquer função de transferência. A seguir são apresentados os espectros de módulo e fase dos componentes básicos de uma função de transferência (ganho, zeros e polos).</p>
+<p>O traçado do diagrama de Bode pode ser esboçado se conhecermos o comportamento de cada tipo de elemento de uma função de transferência. Esboçando o comportamento de cada elemento, e somando os espectros de módulo e fase, obtemos o diagrama de Bode de qualquer função de transferência. A seguir são apresentados os espectros de módulo e fase dos componentes básicos de uma função de transferência (ganho, zeros e polos).</p>
 <section id="diagrama-de-bode-ganho">
 <h3>Diagrama de Bode - Ganho<a class="headerlink" href="#diagrama-de-bode-ganho" title="Link permanente para este cabeçalho">#</a></h3>
 <p>Uma função de transferência definida como apenas um ganho <span class="math notranslate nohighlight">\(H(s)=K\)</span> tem seu valor independente de <span class="math notranslate nohighlight">\(\omega\)</span>. Dessa forma, tanto o módulo quanto a fase serão linhas horizontais, com o módulo tendo valor <span class="math notranslate nohighlight">\(20log_{10}(K)\)</span> e fase <span class="math notranslate nohighlight">\(0\)</span>, quando o ganho tem sinal positivo, e fase <span class="math notranslate nohighlight">\(-180^o\)</span> quando o ganho tem sinal negativo. O diagrama para uma constante <span class="math notranslate nohighlight">\(K=1\)</span> é apresentado a seguir.</p>
@@ -474,14 +483,14 @@ document.write(`
 <p>Uma função de transferência pode ser composta de polos ou zeros únicos. Para o caso com polo único, temos a função de transferência na forma</p>
 <div class="math notranslate nohighlight">
 \[H(j\omega)=\frac{1}{(j\omega+a)}.\]</div>
-<p>O módulo, ::math::<cite>|H(jomega)|</cite>, é definido como</p>
+<p>O módulo, <span class="math notranslate nohighlight">\(|H(j\omega)|\)</span>, é definido como</p>
 <div class="math notranslate nohighlight">
 \[|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|.\]</div>
 <p>Quando <span class="math notranslate nohighlight">\(\omega\)</span> é muito pequeno em relação à <span class="math notranslate nohighlight">\(a\)</span>, o módulo se aproxima à <span class="math notranslate nohighlight">\(-20log_{10}\Big| 1\Big|=0\)</span>. Já para <span class="math notranslate nohighlight">\(\omega&gt;&gt;a\)</span>, o módulo é</p>
 <div class="math notranslate nohighlight">
 \[|H(j\omega)|=-20log_{10}\Big| 1+\frac{j\omega}{a} \Big|\approx -20log_{10}\omega + 20log_{10}a.\]</div>
 <p>Na escala logarítmica, a aproximação da expressão <span class="math notranslate nohighlight">\(-20log_{10}\omega + 20log_{10}\)</span>  equivale à uma reta, iniciando em <span class="math notranslate nohighlight">\(\omega=a\)</span> e com decaimento de -20~dB por década. Dessa forma, uma aproximação da magnitude do diagrama de Bode para um sistema com polo único consiste em uma reta constante entre <span class="math notranslate nohighlight">\(\omega=-\infty\)</span> e <span class="math notranslate nohighlight">\(\omega=a\)</span>, e uma reta decrescente, partindo de <span class="math notranslate nohighlight">\(\omega=a\)</span> até <span class="math notranslate nohighlight">\(\omega=\infty\)</span>, com decaimento de 20dB/Década. Essa aproximação é válida, resultando em uma diferença menor que 3~dB.</p>
-<p>A fase de ::math::<cite>H(jomega)</cite> é dada por</p>
+<p>A fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> é dada por</p>
 <div class="math notranslate nohighlight">
 \[\angle H(j\omega)=-\angle\Big(1+\frac{j\omega}{a} \Big)=-tan^{-1}\Big(\frac{\omega}{a} \Big).\]</div>
 <p>Se avaliarmos o comportamento da fase para <span class="math notranslate nohighlight">\(\omega&lt;&lt;a\)</span>, temos</p>
@@ -520,6 +529,9 @@ document.write(`
 <p><span class="caption-text"><strong>Diagrama de Bode para um polo em s-a (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id4" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
+<p><em>Explicar sobre zeros</em></p>
+<div class="math notranslate nohighlight">
+\[H(j\omega)=(j\omega+a)\]</div>
 <div class="toggle toggle-hidden docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -545,12 +557,445 @@ document.write(`
 <p><span class="caption-text"><strong>Diagrama de Bode para um zero em s-a (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id5" title="Link Permanente para essa imagem">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="diagrama-de-bode-polos-e-zeros-de-segunda-ordem">
+<h3>Diagrama de Bode - Polos e zeros de segunda ordem<a class="headerlink" href="#diagrama-de-bode-polos-e-zeros-de-segunda-ordem" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Função de transferência com polos de segunda ordem.</p>
 <div class="math notranslate nohighlight">
-\[H(j\omega)=(j\omega+b)\]</div>
+\[H(s)=\frac{1}{s^2+2\xi \omega_n s + \omega_n^2}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G2</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">G1</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">G07</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">G05</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 9</span><span class="n">G03</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">11</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=2$&#39;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=1$&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G07</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,7$&#39;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G05</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,5$&#39;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G03</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,3$&#39;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span>     <span class="c1"># get subplot axes</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>                 <span class="c1"># magnitude plot</span>
+<span class="linenos">19</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">20</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">80</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">21</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodePoloOrdem2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id6" style="width: 80%">
+<img alt="_images/exemploBodePoloOrdem2.png" src="_images/exemploBodePoloOrdem2.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para um polos de segunda ordem (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id6" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<p>Função de transferência com polos de segunda ordem.</p>
+<div class="math notranslate nohighlight">
+\[H(s)=s^2+2\xi \omega_n s + \omega_n^2\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G2</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">G1</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">G07</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">G05</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 9</span><span class="n">G03</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">11</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=2$&#39;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=1$&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G07</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,7$&#39;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G05</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,5$&#39;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G03</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\xi=0,3$&#39;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span>     <span class="c1"># get subplot axes</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>                 <span class="c1"># magnitude plot</span>
+<span class="linenos">19</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">20</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="linenos">21</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeZeroOrdem2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id7" style="width: 80%">
+<img alt="_images/exemploBodeZeroOrdem2.png" src="_images/exemploBodeZeroOrdem2.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para zeros de segunda ordem (linha sólida) e suas assíntotas (linha pontilhada).</strong></span><a class="headerlink" href="#id7" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="exemplo-1">
+<h3>Exemplo 1<a class="headerlink" href="#exemplo-1" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Diagrama de bode para a função de trasnferência</p>
+<div class="math notranslate nohighlight">
+\[H(s)=\frac{100(s+1)}{s(s+10)}.\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBode2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id8" style="width: 80%">
+<img alt="_images/exemploBode2.png" src="_images/exemploBode2.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para a FT do exemplo 1.</strong></span><a class="headerlink" href="#id8" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="exemplo-2">
+<h3>Exemplo 2<a class="headerlink" href="#exemplo-2" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Diagrama de bode para a função de trasnferência</p>
+<div class="math notranslate nohighlight">
+\[H(s)=0,01\frac{(s+10)}{(s+0,1)(s+1)}.\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBode3.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id9" style="width: 80%">
+<img alt="_images/exemploBode3.png" src="_images/exemploBode3.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para o a FT do exemplo 2.</strong></span><a class="headerlink" href="#id9" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="projeto-de-filtros">
 <h2>Projeto de Filtros<a class="headerlink" href="#projeto-de-filtros" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="filtros-ideais">
+<h3>Filtros ideais<a class="headerlink" href="#filtros-ideais" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Um filtro consiste em uma entidade capaz de atenuar seletivamente um conjunto de frequências do seu sinal de entrada, retornando em sua saída o sinal filtrado. Uma representação geral de um processo de filtragem é apresentado na figura a seguir.</p>
+<figure class="align-center" id="id10" style="width: 40%">
+<img alt="_images/blocosFiltro.png" src="_images/blocosFiltro.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de blocos de um filtro. O filtro atenua um conjunto de frequências do espectro do sinal de entrada, retornando um sinal filtrado.</strong></span><a class="headerlink" href="#id10" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<p>O resultado ideal de um processo de filtagem consistem em atenuar perfeitamente o conjunto de frequências desejado da banda fitrada (<em>stopband</em>), e não modificar o conjunto de frequências da banda passante (<em>passband</em>), a qual se deseja-se manter. Os quatro tipos básicos de filtros são:</p>
+<ul class="simple">
+<li><p><strong>Filtro passa-baixas ideal.</strong> Todas as frequências abaixo da frequência de corte, <span class="math notranslate nohighlight">\(w_c\)</span>, são mantidas, enquanto todas frequência acima de <span class="math notranslate nohighlight">\(w_c\)</span> são definidas como zero. O comportamento desse filtro passa-baixas ideal é representado por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}H(j\omega) =        \begin{cases}
+                                            1 &amp;: \omega\leq\omega_c\\
+                                            0 &amp;: \text{caso contrário}
+                                    \end{cases}\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Filtro passa-altas ideal.</strong> O filtro passa-altas tem o comportamento inverso do passa-baixas, mantendo as frequências acima de <span class="math notranslate nohighlight">\(w_c\)</span>, e atenuando completamente as frequências abaixo de <span class="math notranslate nohighlight">\(w_c\)</span>. Ele é descrito pela equação</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}H(j\omega) =        \begin{cases}
+                                            1 &amp;: \omega&gt;\omega_c\\
+                                            0 &amp;: \text{caso contrário}
+                                    \end{cases}\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Filtro passa-bandas ideal.</strong> Um filtro passa-bandas mantém as frequências entre $omega_L$ e $omega_H$ atenuando todas as demais frequências. A equação que descreve ele é</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}H(j\omega) =        \begin{cases}
+                                            1 &amp;: \omega_L\leq\omega\leq\omega_H\\
+                                            0 &amp;: \text{caso contrário}
+                                    \end{cases}\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Filtro rejeita-bandas ideal.</strong> O filtro rejeita-bandas tem o comportamento oposto do filtro passa-bandas, já que ele define um conjunto de frequências, entre $omega_L$ e $omega_H$, que será rejeitado, com as demais frequências sendo mantidas. Um tipo específico de filtro rejeita-bandas é o filtro <em>Notch</em>, projetado para rejeitar uma frequência bem específica (em sistemas de áudio é geralmente a frequência da rede de alimentação). Esse filtro é definido por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}H(j\omega) =        \begin{cases}
+                                            0 &amp;: \omega_L\leq\omega\leq\omega_H\\
+                                            1 &amp;: \text{caso contrário}
+                                    \end{cases}\end{split}\]</div>
+<p>A amplitude de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> desses filtro ideais é apresentada a seguir.</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">locale</span>
+<span class="linenos"> 2</span><span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_NUMERIC</span><span class="p">,</span> <span class="s2">&quot;pt_BR&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 5</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.formatter.use_locale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos">10</span><span class="n">FPb</span> <span class="o">=</span> <span class="n">w</span><span class="o">&lt;</span><span class="mi">1000</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">FPb</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="linenos">14</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+<span class="linenos">16</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Passa baixas&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="c1">#axis(&#39;off&#39;)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos">21</span><span class="n">Fpa</span> <span class="o">=</span> <span class="n">w</span><span class="o">&gt;</span><span class="mi">1000</span>
+<span class="linenos">22</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">23</span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">Fpa</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="linenos">25</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">26</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+<span class="linenos">27</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="linenos">28</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Passa altas&quot;</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos">31</span><span class="n">Fpf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">w</span><span class="o">&gt;</span><span class="mi">500</span><span class="p">,</span> <span class="n">w</span><span class="o">&lt;</span><span class="mi">5000</span><span class="p">)</span>
+<span class="linenos">32</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="linenos">33</span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">Fpf</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">34</span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="linenos">35</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">36</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+<span class="linenos">37</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="linenos">38</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Passa faixas&quot;</span><span class="p">)</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos">42</span><span class="n">Frf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">w</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">,</span> <span class="n">w</span><span class="o">&gt;</span><span class="mi">5000</span><span class="p">)</span>
+<span class="linenos">43</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="linenos">44</span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">Frf</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">45</span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="linenos">46</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">47</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+<span class="linenos">48</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="linenos">49</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rejeita faixas&quot;</span><span class="p">)</span>
+<span class="linenos">50</span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="linenos">51</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/filtrosIdeais.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id11" style="width: 80%">
+<img alt="_images/filtrosIdeais.png" src="_images/filtrosIdeais.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Representação do espectro de frequência ideal de filtros.</strong></span><a class="headerlink" href="#id11" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="filtros-praticos">
+<h3>Filtros práticos<a class="headerlink" href="#filtros-praticos" title="Link permanente para este cabeçalho">#</a></h3>
+<p>O comportamento apresentado pelos filtros ideais não é atingível na prática. Um sistema com ganho zero em alguma frequência é não realizável. Dessa forma, um filtro prático é um sistema dinâmico que aproxima o comportamento do filtro ideal. Ao invés de termos uma transição abrupta entre a banda passante e a filtrada, temos uma banda de transição. Existem várias arquiteturas de filtros práticos, as quais são diferenciadas por algumas características como: a linearidade da banda passante; a largura da banda de trasição; a implementação eletrônica; entre outros.</p>
+<p>A arquitetura de filtro mais comum são os filtros <em>Butterworth</em>.</p>
+<div class="math notranslate nohighlight">
+\[H(s)=\frac{1}{(s+a)}\]</div>
+<p><em>Continuação</em></p>
+</section>
+<section id="exemplos-de-filtragem">
+<h3>Exemplos de filtragem<a class="headerlink" href="#exemplos-de-filtragem" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Considere um sinal senoidal puro, com frequência angular <span class="math notranslate nohighlight">\(\omega=0,5\)</span>, definido como</p>
+<div class="math notranslate nohighlight">
+\[x(t)=cos(\omega t).\]</div>
+<p>Esse sinal é corrompido por um ruído branco, representado por <span class="math notranslate nohighlight">\(r(t)\)</span>, que é um sinal com componentes em todo o espectro de potência. O sinal ruidoso é representado por</p>
+<div class="math notranslate nohighlight">
+\[x_r(t)=x(t)+r(t).\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">  2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos">  3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos">  4</span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">gauss</span>
+<span class="linenos">  5</span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">seed</span>
+<span class="linenos">  6</span>
+<span class="linenos">  7</span><span class="c1"># How many time points are needed i,e., Sampling Frequency</span>
+<span class="linenos">  8</span><span class="n">freqAmostragem</span>   <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="linenos">  9</span><span class="c1"># At what intervals time points are sampled</span>
+<span class="linenos"> 10</span>
+<span class="linenos"> 11</span><span class="n">intervaloAmostragem</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">freqAmostragem</span><span class="p">;</span>
+<span class="linenos"> 12</span><span class="c1"># Instantes de início e fim</span>
+<span class="linenos"> 13</span><span class="n">inicio</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 14</span><span class="n">fim</span>     <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="c1"># Frequency of the signals</span>
+<span class="linenos"> 17</span><span class="n">freqSinal1</span>     <span class="o">=</span> <span class="mf">0.5</span>
+<span class="linenos"> 18</span><span class="n">freqSinal2</span>     <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos"> 19</span><span class="c1"># Vetor de pontos do tempo</span>
+<span class="linenos"> 20</span><span class="n">tempo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">inicio</span><span class="p">,</span> <span class="n">fim</span><span class="p">,</span> <span class="n">intervaloAmostragem</span><span class="p">)</span>
+<span class="linenos"> 21</span><span class="c1"># Create two sine waves</span>
+<span class="linenos"> 22</span><span class="n">amplitude1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freqSinal1</span><span class="o">*</span><span class="n">tempo</span><span class="p">)</span>
+<span class="linenos"> 23</span><span class="n">amplitude2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freqSinal2</span><span class="o">*</span><span class="n">tempo</span><span class="p">)</span>
+<span class="linenos"> 24</span><span class="c1"># Create subplot</span>
+<span class="linenos"> 25</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 26</span><span class="c1"># Senóide com frequência 1</span>
+<span class="linenos"> 27</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;sen(0,5t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 28</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tempo</span><span class="p">,</span> <span class="n">amplitude1</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 29</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tempo (s)&#39;</span><span class="p">)</span>
+<span class="linenos"> 30</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 31</span>
+<span class="linenos"> 32</span><span class="n">fourierTransform1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">amplitude1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">amplitude1</span><span class="p">)</span>           <span class="c1"># Normalize amplitude</span>
+<span class="linenos"> 33</span><span class="n">fourierTransform1</span> <span class="o">=</span> <span class="n">fourierTransform1</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">amplitude1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="c1"># Exclude sampling frequency</span>
+<span class="linenos"> 34</span><span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">amplitude1</span><span class="p">)</span>
+<span class="linenos"> 35</span><span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos"> 36</span><span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">freqAmostragem</span>
+<span class="linenos"> 37</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+<span class="linenos"> 38</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos"> 39</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 40</span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="linenos"> 41</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;T. de Fourier de sen(0,5t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 42</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform1</span><span class="p">),</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 43</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequência (rad/s)&#39;</span><span class="p">)</span>
+<span class="linenos"> 44</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span><span class="c1"># Gera um ruído branco</span>
+<span class="linenos"> 47</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 48</span><span class="n">ruidoBranco</span> <span class="o">=</span> <span class="p">[</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tempo</span><span class="o">.</span><span class="n">size</span><span class="p">)]</span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="linenos"> 51</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ruído branco r(t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 52</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tempo</span><span class="p">,</span> <span class="n">ruidoBranco</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 53</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tempo (s)&#39;</span><span class="p">)</span>
+<span class="linenos"> 54</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 55</span>
+<span class="linenos"> 56</span><span class="n">fourierTransform2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">ruidoBranco</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">ruidoBranco</span><span class="p">)</span>           <span class="c1"># Normalize amplitude</span>
+<span class="linenos"> 57</span><span class="n">fourierTransform2</span> <span class="o">=</span> <span class="n">fourierTransform2</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ruidoBranco</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="c1"># Exclude sampling frequency</span>
+<span class="linenos"> 58</span><span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ruidoBranco</span><span class="p">)</span>
+<span class="linenos"> 59</span><span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos"> 60</span><span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">freqAmostragem</span>
+<span class="linenos"> 61</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+<span class="linenos"> 62</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos"> 63</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="linenos"> 64</span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="linenos"> 65</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;T. de Fourier de r(t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 66</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform2</span><span class="p">),</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 67</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequência (rad/s)&#39;</span><span class="p">)</span>
+<span class="linenos"> 68</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 69</span>
+<span class="linenos"> 70</span><span class="c1"># Obtendo x(t)=sen(t)+RuidoBranco</span>
+<span class="linenos"> 71</span><span class="n">x</span> <span class="o">=</span> <span class="n">amplitude1</span> <span class="o">+</span> <span class="n">ruidoBranco</span>
+<span class="linenos"> 72</span><span class="c1"># Time domain representation of the resultant sine wave</span>
+<span class="linenos"> 73</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos"> 74</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;x(t)=sen(t)+r(t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 75</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tempo</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 76</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="linenos"> 77</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos"> 80</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>           <span class="c1"># Normalize amplitude</span>
+<span class="linenos"> 81</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">fourierTransform</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="c1"># Exclude sampling frequency</span>
+<span class="linenos"> 82</span><span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 83</span><span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos"> 84</span><span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">freqAmostragem</span>
+<span class="linenos"> 85</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+<span class="linenos"> 86</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos"> 87</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="linenos"> 88</span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="linenos"> 89</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;T. de Fourier de x(t)&#39;</span><span class="p">)</span>
+<span class="linenos"> 90</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform</span><span class="p">),</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 91</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="linenos"> 92</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos"> 93</span>
+<span class="linenos"> 94</span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="linenos"> 95</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploSenos.png&#39;</span><span class="p">)</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span><span class="c1"># Criando o filtro</span>
+<span class="linenos"> 99</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.414214</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos">100</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">101</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">102</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">103</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeSenos.png&#39;</span><span class="p">)</span>
+<span class="linenos">104</span>
+<span class="linenos">105</span><span class="c1"># Filtrando e plotando o sinal filtrado</span>
+<span class="linenos">106</span><span class="n">T</span><span class="p">,</span> <span class="n">yout</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tempo</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">107</span>
+<span class="linenos">108</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">109</span><span class="c1"># Senóide com frequência 1</span>
+<span class="linenos">110</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;x_r(t)=sen(0,5t)+r(t)&#39;</span><span class="p">)</span>
+<span class="linenos">111</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tempo</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">112</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tempo (s)&#39;</span><span class="p">)</span>
+<span class="linenos">113</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos">116</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>           <span class="c1"># Normalize amplitude</span>
+<span class="linenos">117</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">fourierTransform</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="c1"># Exclude sampling frequency</span>
+<span class="linenos">118</span><span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">119</span><span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos">120</span><span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">freqAmostragem</span>
+<span class="linenos">121</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+<span class="linenos">122</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos">123</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">124</span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="linenos">125</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;T. de Fourier de x_r(t)&#39;</span><span class="p">)</span>
+<span class="linenos">126</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform</span><span class="p">),</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">127</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="linenos">128</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos">129</span>
+<span class="linenos">130</span>
+<span class="linenos">131</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="linenos">132</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+<span class="linenos">133</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">yout</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">134</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tempo (s)&#39;</span><span class="p">)</span>
+<span class="linenos">135</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos">136</span>
+<span class="linenos">137</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos">138</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">yout</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">yout</span><span class="p">)</span>           <span class="c1"># Normalize amplitude</span>
+<span class="linenos">139</span><span class="n">fourierTransform</span> <span class="o">=</span> <span class="n">fourierTransform</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yout</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="c1"># Exclude sampling frequency</span>
+<span class="linenos">140</span><span class="n">tpCount</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yout</span><span class="p">)</span>
+<span class="linenos">141</span><span class="n">values</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tpCount</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos">142</span><span class="n">timePeriod</span>  <span class="o">=</span> <span class="n">tpCount</span><span class="o">/</span><span class="n">freqAmostragem</span>
+<span class="linenos">143</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">values</span><span class="o">/</span><span class="n">timePeriod</span>
+<span class="linenos">144</span><span class="c1"># Frequency domain representation</span>
+<span class="linenos">145</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="linenos">146</span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="linenos">147</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;T. de Fourier de y(t)&#39;</span><span class="p">)</span>
+<span class="linenos">148</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fourierTransform</span><span class="p">),</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos">149</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="linenos">150</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span>
+<span class="linenos">153</span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="linenos">154</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploSenosFiltrado.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id12" style="width: 80%">
+<img alt="_images/exemploSenos.png" src="_images/exemploSenos.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Exemplo do sinal senoidal corrompido por um ruído branco.</strong></span><a class="headerlink" href="#id12" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13" style="width: 80%">
+<img alt="_images/exemploBodeSenos.png" src="_images/exemploBodeSenos.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Diagrama de Bode para o filtro passa-baixas *Butterworth* de segunda ordem.</strong></span><a class="headerlink" href="#id13" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id14" style="width: 80%">
+<img alt="_images/exemploSenosFiltrado.png" src="_images/exemploSenosFiltrado.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Comparação entre os sinal ruidoso e filtrado, e seus espectros de Fourier.</strong></span><a class="headerlink" href="#id14" title="Link Permanente para essa imagem">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="exercicios">
+<h2>Exercícios<a class="headerlink" href="#exercicios" title="Link permanente para este cabeçalho">#</a></h2>
+<ul class="simple">
+<li><p><strong>Exercício 1</strong> Encontre a magnitude e a fase de <span class="math notranslate nohighlight">\(H(j\omega)\)</span> para <span class="math notranslate nohighlight">\(\omega=2\)</span> e para <span class="math notranslate nohighlight">\(\omega=10\)</span> para a função de transferência</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[H(s)=\frac{10(s+2)}{(s+1)(s+5)}\]</div>
 </section>
 </section>
 
@@ -601,9 +1046,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-ganho">Diagrama de Bode - Ganho</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-na-origem">Diagrama de Bode - Polo ou Zero na origem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polo-ou-zero-de-primeira-ordem">Diagrama de Bode - Polo ou Zero de primeira ordem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode-polos-e-zeros-de-segunda-ordem">Diagrama de Bode - Polos e zeros de segunda ordem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1">Exemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-2">Exemplo 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-de-filtros">Projeto de Filtros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-ideais">Filtros ideais</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-praticos">Filtros práticos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-filtragem">Exemplos de filtragem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios">Exercícios</a></li>
 </ul>
   </nav></div>
 
